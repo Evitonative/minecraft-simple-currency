@@ -1,6 +1,6 @@
 package com.github.evitonative.simplecurrency.utils;
 
-@SuppressWarnings("unused")
+@SuppressWarnings("ALL")
 public enum Messages {
     BALANCE("balance"),
     BALANCE_OTHER("balance-others"),
@@ -16,8 +16,10 @@ public enum Messages {
         PAY("pay"),
         ;
 
-        static String path;
-        Bank(String path){}
+        String path;
+        Bank(String path){
+            this.path = path;
+        }
 
         public String getPath(){
             return "messages.bank." + path;
@@ -29,8 +31,10 @@ public enum Messages {
         ITEMS("items"),
         ;
 
-        static String path;
-        Withdrawal(String path){}
+        String path;
+        Withdrawal(String path){
+            this.path = path;
+        }
 
         public String getPath(){
             return "messages.withdrawal." + path;
@@ -42,8 +46,10 @@ public enum Messages {
         INVALID("invalid"),
         ;
 
-        static String path;
-        Deposit(String path){}
+        String path;
+        Deposit(String path){
+            this.path = path;
+        }
 
         public String getPath(){
             return "messages.deposit." + path;
@@ -63,16 +69,20 @@ public enum Messages {
         MISSING_PERMISSIONS("missing-permissions"),
         ;
 
-        static String path;
-        Errors(String path){}
+        String path;
+        Errors(String path){
+            this.path = path;
+        }
 
         public String getPath(){
             return "messages.errors." + path;
         }
     }
 
-    static String path;
-    Messages(String path){}
+    String path;
+    Messages(String path){
+        this.path = path;
+    }
 
     public String getPath(){
         return "messages." + path;
