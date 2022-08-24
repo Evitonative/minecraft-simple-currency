@@ -19,12 +19,12 @@ public class DataManager implements Listener {
 
     private static final Map<UUID, CurrencyPlayer> players = new HashMap<>();
     private static Connection conn;
-    private static String table = plugin.getConfig().getString("mysql.prefix") + "players";
-    private static boolean mySql = plugin.getConfig().getBoolean("mysql.enabled");
+    private static final String table = plugin.getConfig().getString("mysql.prefix") + "players";
+    private static final boolean mySql = plugin.getConfig().getBoolean("mysql.enabled");
 
     public static void initializeDatabaseConnection() throws SQLException, NullPointerException {
         boolean mySql = plugin.getConfig().getBoolean("mysql.enabled");
-        String url = "";
+        String url;
 
         if (mySql) {
             url = "jdbc:mysql://" + plugin.getConfig().getString("mysql.url") + ":" + plugin.getConfig().getInt("mysql.port") + "/" + plugin.getConfig().getString("mysql.database");
@@ -55,7 +55,7 @@ public class DataManager implements Listener {
      * @return The uuid or null if the player has no account
      */
     public static @Nullable UUID getUUID(String username) {
-        ResultSet rs = null;
+        ResultSet rs;
         try {
             Statement stm = conn.createStatement();
             String statement = "SELECT uuid FROM " + table + " WHERE name = '" + username + "'";
@@ -162,7 +162,7 @@ public class DataManager implements Listener {
         players.forEach((k, v) -> {
             try {
                 Statement stm = conn.createStatement();
-                String statement = "";
+                String statement;
                 if(mySql) statement = "INSERT INTO " + table + " (uuid, name, balance) VALUES ('" + v.getUuid() + "', '" + v.getName() + "', " + v.getAmount() + ") ON DUPLICATE KEY UPDATE name='" + v.getName() + "', balance=" + v.getAmount();
                 else statement = "INSERT OR REPLACE INTO " + table + " (uuid, name, balance) VALUES ('" + v.getUuid() + "', '" + v.getName() + "', " + v.getAmount() + ")";
                 stm.execute(statement);

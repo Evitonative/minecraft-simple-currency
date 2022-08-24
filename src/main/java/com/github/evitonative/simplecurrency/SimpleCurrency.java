@@ -56,6 +56,7 @@ public final class SimpleCurrency extends JavaPlugin {
         physicalCurrencyItems = new ArrayList<>();
         //noinspection unchecked
         List<LinkedHashMap<String, Object>> payoutItemsList = plugin.getConfig().getObject("items", List.class);
+        assert payoutItemsList != null;
         payoutItemsList.forEach(o -> {
             //noinspection unchecked
             PhysicalCurrencyItem item = new PhysicalCurrencyItem((int) o.get("value"),

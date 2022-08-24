@@ -44,13 +44,12 @@ public class BalCommand implements CommandExecutor, TabCompleter {
 
         //Set players balance
         if(args[0].equals("set")){
-            if(args.length <= 3) return DefaultResponses.Errors.missingArguments(sender);
             //noinspection DuplicatedCode
+            if(args.length <= 3) return DefaultResponses.Errors.missingArguments(sender);
+
             if(player != null && !player.hasPermission("simple-currency.set.others") ||
                     (player != null && player.getName().equals(args[1]) && !player.hasPermission("simple-currency.set.own"))) //TODO HUH?
                 return DefaultResponses.Errors.missingPermissions(sender);
-
-            if(args.length < 3) return DefaultResponses.Errors.missingArguments(sender);
 
             try{
                 UUID setPlayer;
@@ -79,13 +78,12 @@ public class BalCommand implements CommandExecutor, TabCompleter {
 
         //Add to players balance
         if(args[0].equals("add")){
-            if(args.length <= 3) return DefaultResponses.Errors.missingArguments(sender);
             //noinspection DuplicatedCode
+            if(args.length <= 3) return DefaultResponses.Errors.missingArguments(sender);
+
             if(player != null && !player.hasPermission("simple-currency.set.others") ||
                     (player != null && player.getName().equals(args[1]) && !player.hasPermission("simple-currency.set.own")))
                 return DefaultResponses.Errors.missingPermissions(sender);
-
-            if(args.length < 3) return DefaultResponses.Errors.missingArguments(sender);
 
             try{
                 UUID setPlayer;
@@ -126,6 +124,7 @@ public class BalCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
+    @SuppressWarnings("SameReturnValue")
     public boolean sendBalMsg(Player player){
         player.sendMessage(ColourFormatting.parseFromConfigWithPlaceholders(Messages.BALANCE.getPath(), DataManager.getPlayerBalance(player.getUniqueId())));
         return true;
@@ -151,43 +150,40 @@ public class BalCommand implements CommandExecutor, TabCompleter {
 
         boolean hasSetPerms = sender.hasPermission("simple-currency.bal.set") || sender.hasPermission("simple-currency.bal.set.own") || sender.hasPermission("simple-currency.bal.set.others");
 
-        switch (args.length){
-            case 1: {
-                if (hasSetPerms){
+        switch (args.length) {
+            case 1 -> {
+                if (hasSetPerms) {
                     list.add("add");
                     list.add("set");
                 }
-                if(sender.hasPermission("simple.currency.bal.others")){
-                    for (Player player : SimpleCurrency.plugin.getServer().getOnlinePlayers()){
+                if (sender.hasPermission("simple.currency.bal.others")) {
+                    for (Player player : SimpleCurrency.plugin.getServer().getOnlinePlayers()) {
                         list.add(player.getName());
                     }
                 }
-                break;
             }
-            case 2: {
-                if(hasSetPerms && (args[0].equals("add") || args[0].equals("set"))){
-                    if(sender.hasPermission("simple.currency.bal.set.others")){
-                        for (Player player : SimpleCurrency.plugin.getServer().getOnlinePlayers()){
+            case 2 -> {
+                if (hasSetPerms && (args[0].equals("add") || args[0].equals("set"))) {
+                    if (sender.hasPermission("simple.currency.bal.set.others")) {
+                        for (Player player : SimpleCurrency.plugin.getServer().getOnlinePlayers()) {
                             list.add(player.getName());
                         }
                         list.remove(sender.getName());
                     }
-                    if(sender.hasPermission("simple-currency.bal.set.own")) list.add(sender.getName());
+                    if (sender.hasPermission("simple-currency.bal.set.own")) list.add(sender.getName());
                 }
-                break;
             }
-            case 3:{
-                if(hasSetPerms && (args[0].equals("add") || args[0].equals("set"))){
+            case 3 -> {
+                if (hasSetPerms && (args[0].equals("add") || args[0].equals("set"))) {
                     list.add("1");
                     list.add("5");
                     list.add("10");
                     list.add("50");
                     list.add("100");
                 }
-                break;
             }
         }
 
         return list;
     }
-} //TODO CHECK IF THIS IS CORRECT
+}

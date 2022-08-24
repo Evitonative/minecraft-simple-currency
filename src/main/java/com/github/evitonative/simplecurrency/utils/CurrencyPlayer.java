@@ -4,6 +4,8 @@ import com.github.evitonative.simplecurrency.SimpleCurrency;
 
 import java.util.UUID;
 
+
+@SuppressWarnings("unused")
 public class CurrencyPlayer {
     private long amount;
     private UUID uuid;
@@ -14,12 +16,14 @@ public class CurrencyPlayer {
 
     public CurrencyPlayer(long amount, UUID uuid) {
         this.amount = amount;
+        //noinspection ConstantConditions - Should not be a proble here I hope
         this.name = SimpleCurrency.plugin.getServer().getPlayer(uuid).getName();
         this.uuid = uuid;
     }
 
     public CurrencyPlayer(long amount, UUID uuid, double lastX, double lastY, double lastZ) {
         this.amount = amount;
+        //noinspection ConstantConditions - Should not be a proble here I hope
         this.name = SimpleCurrency.plugin.getServer().getPlayer(uuid).getName();
         this.uuid = uuid;
         this.lastX = lastX;

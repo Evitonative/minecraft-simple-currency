@@ -4,7 +4,7 @@ import org.bukkit.command.CommandSender;
 
 @SuppressWarnings("SameReturnValue")
 public class DefaultResponses {
-    public class Errors{
+    public static class Errors{
         public static boolean console(CommandSender sender){
             sender.sendMessage(ColourFormatting.parseFromConfig(Messages.Errors.CONSOLE.getPath()));
             return true;
