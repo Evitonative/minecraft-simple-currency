@@ -1,0 +1,55 @@
+name: SimpleCurrency
+version: '${project.version}'
+main: com.github.evitonative.simplecurrency.SimpleCurrency
+api-version: 1.19
+authors: [ Evito ]
+website: https://github.com/evitonative
+commands:
+  pay:
+    description: Pay someone
+    permission: simple-currency.pay
+  bal:
+    description: Get the balance on your account
+    permission: simple-currency.bal
+  withdraw:
+    description: Withdraw money from your bank account
+    permission: simple-currency.withdraw
+  deposit:
+    description: Deposit money on your bank account
+    permission: simple-currency.deposit
+  bank:
+    description: Get insight into your account
+    permission: simple-currency.bank
+  screload:
+    description: Reload the plugin config
+    permission: simple-currency.reload
+permissions:
+  simple-currency.*:
+    default: false
+  simple-currency.pay:
+    default: true
+  simple-currency.bal:
+    default: true
+  simple-currency.reload:
+    default: op
+  simple-currency.bal.others:
+    default: op
+  simple-currency.bal.set:
+    default: op
+    children:
+      simple-currency.bal.set.own: true
+      simple-currency.bal.set.others: true
+  simple-currency.bal.set.own:
+    default: op
+  simple-currency.bal.set.others:
+    default: op
+  simple-currency.withdraw:
+    default: true
+  simple-currency.deposit:
+    default: true
+  simple-currency.bank:
+    default: true
+  simple-currency.bank.history:
+    default: true
+  simple-currency.bank.history.others:
+    default: op

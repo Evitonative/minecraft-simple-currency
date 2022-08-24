@@ -1,0 +1,79 @@
+#Default amount players should get
+default-amount: 50
+
+#Auto balance
+#Delay in sec
+#A player is counted as AFK if they have not moved between the current and last attempt to give them money
+autobalance:
+  enabled: true
+  delay: 300
+  amount: 5
+  ignore-afk: false
+
+#Data Storage
+#Why mysql is disabled,sqlite will be used
+mysql:
+  enabled: false
+  url: 127.0.0.1
+  port: 3306
+  user: minecraft
+  password: password
+  database: minecraft
+  prefix: sc_
+
+#Items for the withdrawal and deposit command
+#These must be sorted by value (ascending)
+#Item(type) and CustomModelData are used for identification for /deposit
+#Set CustomModelData if you want to prevent crafted items
+#This will not prevent any duplication glitches, which you risk by having and Item Based economy
+#To prevent duplication set the "simple-currency.deposit" and "simple-currency.withdraw" permissions false for everyone
+#Set CustomModelData to null if you want to allow crafted items
+items:
+  - value: 1
+    item: "CLOCK"
+    name: "&r&6&lCoin"
+    lore:
+      - "&5{0} coin"
+    customModelData: 1
+  - value: 5
+    item: "CLOCK"
+    name: "&r&6&lStack of Coins"
+    lore:
+      - "&5{0} coins"
+    customModelData: 2
+  - value: 10
+    item: "CLOCK"
+    name: "&r&6&lTreasury of Coins"
+    lore:
+      - "&5{0} coins"
+    customModelData: 3
+
+messages:
+  balance: "[$] &aYour balance: &e{0} coins"
+  balance-others: "[$] &a{0}s balance: &e{1} coins"
+  set: "[$] &aSuccessfully changed {0} balance."
+  payed: "[$] &aYou successfully gave {0} &e{1} coins."
+  received: "[$] &a{0} gave you &e{1} coins."
+  bank:
+    title: "[$] &6&l{0}s coin account"
+    current-balance: "&7Current balance: &e{0} coins"
+    deposit: "» &aDeposit Coins"
+    withdraw: "» &aWithdraw Coins"
+    pay: "» &aPay someone"
+  withdrawal:
+    title: "[$] &6&lYou received:"
+    items: "» &a{0} {1}"
+  deposit:
+    success: "[$] &aYou deposited {0} coins into your account"
+    invalid: "[$] &cYou do not hold a currency item in your hand."
+  errors:
+    console: "&cThis command is only available to players."
+    no-self: "[$] &cYou can't pay yourself."
+    no-negatives: "[$] &cPlease use a positive amount."
+    not-enough-money: "[$] &cYou do not have enough coins. You need {0} coins but only have {1}."
+    not-enough-space: "[$] &cYou do not have enough space in you inventory."
+    invalid-player: "[$] &cPlease provide a player on the server."
+    invalid-player-offline: "[$] &cThis player is not know on this server."
+    int-required: "[$] &cPlease provide an integer for argument {0}"
+    missing-arguments: "[$] &cPlease add all arguments"
+    missing-permissions: "[$] &cYou are not permitted to do that."
