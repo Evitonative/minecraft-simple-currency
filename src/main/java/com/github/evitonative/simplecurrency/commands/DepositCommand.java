@@ -2,6 +2,7 @@ package com.github.evitonative.simplecurrency.commands;
 
 import com.github.evitonative.simplecurrency.SimpleCurrency;
 import com.github.evitonative.simplecurrency.utils.*;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -12,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DepositCommand implements CommandExecutor, TabCompleter {
@@ -27,11 +29,10 @@ public class DepositCommand implements CommandExecutor, TabCompleter {
      * @param args    Passed command arguments
      * @return true if a valid command, otherwise false
      */
-    @Override
+    @Override //TODO THIS SOMEHOW STOPPED WORKING
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if(!sender.hasPermission("simple-currency.deposit")) return DefaultResponses.Errors.missingPermissions(sender); //Check Permissions
         if(!(sender instanceof Player player)) return DefaultResponses.Errors.console(sender); //Check console
-        if(args.length == 0) return DefaultResponses.Errors.missingArguments(sender); //Check argument count
 
         ItemStack item = player.getInventory().getItemInMainHand();
         if(item.getType() == Material.AIR){
@@ -42,10 +43,16 @@ public class DepositCommand implements CommandExecutor, TabCompleter {
         PhysicalCurrencyItem currencyItem = null;
 
         for (PhysicalCurrencyItem itemType : SimpleCurrency.physicalCurrencyItems) {
-            if(itemType.material() == item.getType() && item.getItemMeta() == null)
-                 if(itemType.customModelData() == null) currencyItem = itemType;
-            else if (itemType.material() == item.getType() && itemType.customModelData() == item.getItemMeta().getCustomModelData())
-                currencyItem = itemType;
+            if(itemType.material() == item.getType()){
+
+                if(!item.hasItemMeta()) {
+                    if(itemType.customModelData() == null) {
+                        currencyItem = itemType;
+                    }
+                }
+                else //noinspection ConstantConditions - Cant be null
+                    if (itemType.customModelData() == item.getItemMeta().getCustomModelData()) currencyItem = itemType;
+            }
         }
 
         if(currencyItem == null){
@@ -79,6 +86,6 @@ public class DepositCommand implements CommandExecutor, TabCompleter {
     @Nullable
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        return null;
+        return new ArrayList<>();
     }
 }
