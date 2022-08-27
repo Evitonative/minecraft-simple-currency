@@ -4,6 +4,15 @@ You can use custom model data as well that-way you can have your custom textures
 
 **Vault support is planned but not yet implemented.**
 
+## Installation
+1. Download the latest release from [https://github.com/Evitonative/minecraft-simple-currency/releases/](https://github.com/Evitonative/minecraft-simple-currency/releases/)
+2. Place the `.jar` in your plugin folder
+3. Start your server
+4. Adjust the configurations in `/plugins/SimpleCurrency` to your linking
+5. Restart the server to apply the settings
+
+> ℹ️ `/screload` might work instead of restarting, though it might miss a few details or create data inconsistencies when changing the database.
+
 ## Commands & Permissions
 
 | Command                      | Permission                       | Description                                                              |
@@ -48,10 +57,12 @@ autobalance:
   ignore-afk: false
 ```
 
-### Datastore
+### Data Storage
 Here you can choose whether to save players balance in a MySQL Database or in an SQLite database.
 When you choose MySQL set enabled to `true` and set the relevant details. 
 When to keep enabled on `false` and you can ignore the other details. The SQLite database will be created in this plugins' directory.
+
+> ⚠️ Switching the switching between MySQL and SQLite, changing the table prefix or the database might result in data loss or inconsistencies of data 
 
 ```yaml
 mysql:
