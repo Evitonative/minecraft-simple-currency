@@ -45,7 +45,7 @@ public class BalCommand implements CommandExecutor, TabCompleter {
         //Set players balance
         if(args[0].equals("set")){
             //noinspection DuplicatedCode
-            if(args.length <= 3) return DefaultResponses.Errors.missingArguments(sender);
+            if(args.length < 3) return DefaultResponses.Errors.missingArguments(sender);
 
             if(player != null && !player.hasPermission("simple-currency.set.others") ||
                     (player != null && player.getName().equals(args[1]) && !player.hasPermission("simple-currency.set.own"))) //TODO HUH?
@@ -79,7 +79,7 @@ public class BalCommand implements CommandExecutor, TabCompleter {
         //Add to players balance
         if(args[0].equals("add")){
             //noinspection DuplicatedCode
-            if(args.length <= 3) return DefaultResponses.Errors.missingArguments(sender);
+            if(args.length < 3) return DefaultResponses.Errors.missingArguments(sender);
 
             if(player != null && !player.hasPermission("simple-currency.set.others") ||
                     (player != null && player.getName().equals(args[1]) && !player.hasPermission("simple-currency.set.own")))
@@ -148,7 +148,7 @@ public class BalCommand implements CommandExecutor, TabCompleter {
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         List<String> list = new ArrayList<>();
 
-        boolean hasSetPerms = sender.hasPermission("simple-currency.bal.set") || sender.hasPermission("simple-currency.bal.set.own") || sender.hasPermission("simple-currency.bal.set.others");
+        boolean hasSetPerms = sender.hasPermission("simple-currency.bal.set.own") || sender.hasPermission("simple-currency.bal.set.others");
 
         switch (args.length) {
             case 1 -> {
