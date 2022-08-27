@@ -2,7 +2,6 @@ package com.github.evitonative.simplecurrency.commands;
 
 import com.github.evitonative.simplecurrency.SimpleCurrency;
 import com.github.evitonative.simplecurrency.utils.*;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
