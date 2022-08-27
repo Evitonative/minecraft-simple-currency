@@ -1,4 +1,5 @@
-#Default amount players should get
+#Sets the amout of (digital) currency a player should receive on joining the first time.
+#Set to 0 to disable.
 default-amount: 50
 
 #Auto balance
@@ -30,23 +31,23 @@ mysql:
 #Set CustomModelData to null if you want to allow crafted items
 items:
   - value: 1
-    item: "CLOCK"
-    name: "&r&6&lCoin"
+    item: "GOLD_NUGGET"
+    name: "&r&6&lGold Nugget"
     lore:
       - "&5{0} coin"
-    customModelData: 1
+    customModelData: null
   - value: 5
-    item: "CLOCK"
-    name: "&r&6&lStack of Coins"
+    item: "GOLD_INGOT"
+    name: "&r&6&lGold Ingot"
     lore:
       - "&5{0} coins"
-    customModelData: 2
+    customModelData: null
   - value: 10
-    item: "CLOCK"
-    name: "&r&6&lTreasury of Coins"
+    item: "GOLD_BLOCK"
+    name: "&r&6&lGold Block"
     lore:
       - "&5{0} coins"
-    customModelData: 3
+    customModelData: null
 
 messages:
   balance: "[$] &aYour balance: &e{0} coins"
@@ -65,7 +66,7 @@ messages:
     items: "» &a{0} {1}"
   deposit:
     success: "[$] &aYou deposited {0} coins into your account"
-    invalid: "[$] &cYou do not hold a currency item in your hand."
+    invalid: "[$] &cYou do not have a currency item in your hand."
   errors:
     console: "&cThis command is only available to players."
     no-self: "[$] &cYou can't pay yourself."
