@@ -5,9 +5,14 @@ import com.github.evitonative.simplecurrency.utils.DefaultResponses;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class ReloadCommand implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReloadCommand implements CommandExecutor, TabCompleter {
     /**
      * Executes the given command, returning its success.
      * <br>
@@ -27,5 +32,24 @@ public class ReloadCommand implements CommandExecutor {
         SimpleCurrency.reload();
         sender.sendMessage("Reloading...");
         return true;
+    }
+
+    /**
+     * Requests a list of possible completions for a command argument.
+     *
+     * @param sender  Source of the command.  For players tab-completing a
+     *                command inside of a command block, this will be the player, not
+     *                the command block.
+     * @param command Command which was executed
+     * @param label   Alias of the command which was used
+     * @param args    The arguments passed to the command, including final
+     *                partial argument to be completed
+     * @return A List of possible completions for the final argument, or null
+     * to default to the command executor
+     */
+    @Nullable
+    @Override
+    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        return new ArrayList<>();
     }
 }
