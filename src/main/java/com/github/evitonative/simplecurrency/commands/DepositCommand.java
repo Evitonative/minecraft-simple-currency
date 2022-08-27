@@ -47,10 +47,18 @@ public class DepositCommand implements CommandExecutor, TabCompleter {
                 if(!item.hasItemMeta()) {
                     if(itemType.customModelData() == null) {
                         currencyItem = itemType;
+                        break;
                     }
                 }
-                else //noinspection ConstantConditions - Cant be null
-                    if (itemType.customModelData() == item.getItemMeta().getCustomModelData()) currencyItem = itemType;
+                else
+                    if(itemType.customModelData() == null) {
+                        currencyItem = itemType;
+                        break;
+                    } else //noinspection ConstantConditions - Cant be null
+                        if (itemType.customModelData() == item.getItemMeta().getCustomModelData()) {
+                            currencyItem = itemType;
+                            break;
+                        }
             }
         }
 
