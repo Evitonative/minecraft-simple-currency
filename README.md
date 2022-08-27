@@ -8,7 +8,7 @@ You can use custom model data as well that-way you can have your custom textures
 1. Download the latest release from [https://github.com/Evitonative/minecraft-simple-currency/releases/](https://github.com/Evitonative/minecraft-simple-currency/releases/)
 2. Place the `.jar` in your plugin folder
 3. Start your server
-4. Adjust the configurations in `/plugins/SimpleCurrency` to your linking
+4. Adjust the configurations in `/plugins/SimpleCurrency` to your liking.
 5. Restart the server to apply the settings
 
 > ℹ️ `/screload` might work instead of restarting, though it might miss a few details or create data inconsistencies when changing the database.
