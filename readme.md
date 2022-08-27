@@ -6,19 +6,19 @@ You can use custom model data as well that-way you can have your custom textures
 
 ## Commands & Permissions
 
-| Command                      | Permission                       | Description                                                             |
-|------------------------------|----------------------------------|-------------------------------------------------------------------------|
-|                              | `simple-currency.*`              | Get access to all commands                                              |
-| `/bal`                       | `simple-currency.bal`            | Get the balance in your account                                         |
-| `/bal [player]`              | `simple-currency.bal.others`     | Get the balance of another player                                       |
-| `/bal set [player] [amount]` | `simple-currency.bal.set`        | Set someones balance                                                    |
-| `/bal set [player] [amount]` | `simple-currency.bal.set.others` | Set someones elses balance                                              |
-| `/bal set [player] [amount]` | `simple-currency.bal.set.own`    | Set someones own balance                                                |
-| `/bank`                      | `simple-currency.bank`           | Get a chat gui of all player important links                            |
-| `/deposit`                   | `simple-currency.deposit`        | Deposit the currency item you have in your hand into your bank          |
-| `/pay [player] [amout]`      | `simple-currency.pay`            | Pay a player a specified amount                                         |
-| `/screload`                  | `simple-currency.reload`         | Reload the plugins configuration                                        |
-| `/withdraw [amount]`         | `simple-currency.withdraw`       | Get a specific amout of digital money in your bank as physical currency |
+| Command                      | Permission                       | Description                                                              |
+|------------------------------|----------------------------------|--------------------------------------------------------------------------|
+|                              | `simple-currency.*`              | Get access to all commands.                                              |
+| `/bal`                       | `simple-currency.bal`            | Get the balance in your account.                                         |
+| `/bal [player]`              | `simple-currency.bal.others`     | Get the balance of another player.                                       |
+| `/bal set [player] [amount]` | `simple-currency.bal.set`        | Set someones balance.                                                    |
+| `/bal set [player] [amount]` | `simple-currency.bal.set.others` | Set someones elses balance.                                              |
+| `/bal set [player] [amount]` | `simple-currency.bal.set.own`    | Set someones own balance.                                                |
+| `/bank`                      | `simple-currency.bank`           | Get a chat gui of all player important links.                            |
+| `/deposit`                   | `simple-currency.deposit`        | Deposit the currency item you have in your hand into your bank.          |
+| `/pay [player] [amout]`      | `simple-currency.pay`            | Pay a player a specified amount.                                         |
+| `/screload`                  | `simple-currency.reload`         | Reload the plugins configuration.                                        |
+| `/withdraw [amount]`         | `simple-currency.withdraw`       | Get a specific amout of digital money in your bank as physical currency. |
 
 
 
@@ -35,9 +35,9 @@ Give every player a certain amout of coins every n seconds.
 
 | Value      | Description                                                                                                             |
 |------------|-------------------------------------------------------------------------------------------------------------------------|
-| enable     | If autobalance should be used                                                                                           |
-| delay      | The delay in seconds between every player should be given currency                                                      |
-| amout      | The amout that should be given                                                                                          |
+| enable     | If autobalance should be used.                                                                                          |
+| delay      | The delay in seconds between every player should be given currency.                                                     |
+| amout      | The amout that should be given.                                                                                         |
 | ignore-afk | Disables the afk checking based on position. When set to false a player get the automatic currency only once while afk. |
 
 ```yaml
@@ -71,7 +71,7 @@ To add a new item copy an existing one and change the details.
 
 | Value           | Description                                                                                                                                            |
 |-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| value           | The amout of digital money this item should be worth                                                                                                   |
+| value           | The amout of digital money this item should be worth.                                                                                                  |
 | item            | The item material which should be used. A list of all materials is available [here](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html) |
 | name            | A custom name for the item. Use & format codes to format the name. RGB is not supported (yet).                                                         |
 | lore            | A custom lore for the item. Use & format codes to format the name. RGB is not supported (yet). Use {0} to get the value of the given item.             |
