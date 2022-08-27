@@ -30,8 +30,6 @@ permissions:
     default: true
   simple-currency.bal:
     default: true
-  simple-currency.reload:
-    default: op
   simple-currency.bal.others:
     default: op
   simple-currency.bal.set:
@@ -49,7 +47,5 @@ permissions:
     default: true
   simple-currency.bank:
     default: true
-  simple-currency.bank.history:
-    default: true
-  simple-currency.bank.history.others:
+  simple-currency.reload:
     default: op
