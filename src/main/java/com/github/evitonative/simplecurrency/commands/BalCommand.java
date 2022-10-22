@@ -166,7 +166,11 @@ public class BalCommand implements CommandExecutor, TabCompleter {
                 if (hasSetPerms && (args[0].equals("add") || args[0].equals("set"))) {
                     if (sender.hasPermission("simple.currency.bal.set.others")) {
                         for (Player player : SimpleCurrency.plugin.getServer().getOnlinePlayers()) {
-                            list.add(player.getName());
+                            if(player.getName().startsWith(args[1])){
+                                int length = args[1].length();
+                                String result = player.getName().substring(length);
+                                list.add(result);
+                            }
                         }
                         list.remove(sender.getName());
                     }

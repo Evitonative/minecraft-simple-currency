@@ -6,7 +6,7 @@
 
     <groupId>io.github.evitonative</groupId>
     <artifactId>simple-currency</artifactId>
-    <version>0.1.0-beta</version>
+    <version>0.2.0-beta</version>
     <packaging>jar</packaging>
 
     <name>Simple Currency</name>
