@@ -5,7 +5,7 @@ public enum Messages {
     BALANCE("balance"),
     BALANCE_OTHER("balance-others"),
     PAYED("payed"),
-    RECEIVED("payed"),
+    RECEIVED("received"),
     ;
 
     public enum Bank{
