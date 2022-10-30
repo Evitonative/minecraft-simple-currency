@@ -93,11 +93,8 @@ public class PayCommand implements CommandExecutor, TabCompleter {
         switch (args.length) {
             case 1 -> {
                 for (Player player : SimpleCurrency.plugin.getServer().getOnlinePlayers()) {
-                    if(player.getName().startsWith(args[0])){
-                        int length = args[0].length();
-                        String result = player.getName().substring(length);
-                        list.add(result);
-                    }
+                    if(player.getName().startsWith(args[0]))
+                        list.add(player.getName());
                 }
             }
             case 2 -> {

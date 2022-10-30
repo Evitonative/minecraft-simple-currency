@@ -158,11 +158,8 @@ public class BalCommand implements CommandExecutor, TabCompleter {
                 }
                 if (sender.hasPermission("simple.currency.bal.others")) {
                     for (Player player : SimpleCurrency.plugin.getServer().getOnlinePlayers()) {
-                        if(player.getName().startsWith(args[0])){
-                            int length = args[0].length();
-                            String result = player.getName().substring(length);
-                            list.add(result);
-                        }
+                        if(player.getName().startsWith(args[0]))
+                            list.add(player.getName());
                     }
                 }
             }
@@ -170,11 +167,8 @@ public class BalCommand implements CommandExecutor, TabCompleter {
                 if (hasSetPerms && (args[0].equals("add") || args[0].equals("set"))) {
                     if (sender.hasPermission("simple.currency.bal.set.others")) {
                         for (Player player : SimpleCurrency.plugin.getServer().getOnlinePlayers()) {
-                            if(player.getName().startsWith(args[1])){
-                                int length = args[1].length();
-                                String result = player.getName().substring(length);
-                                list.add(result);
-                            }
+                            if(player.getName().startsWith(args[1]))
+                                list.add(player.getName());
                         }
                         list.remove(sender.getName());
                     }
